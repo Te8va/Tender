@@ -28,3 +28,9 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+sql/
+docker-compose.yml
+tender-db/
+.env
+*.log

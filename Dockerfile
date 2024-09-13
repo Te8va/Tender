@@ -1,15 +1,13 @@
-FROM gradle:4.7.0-jdk8-alpine AS build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle build --no-daemon 
+FROM golang:latest AS build
+WORKDIR /build
+COPY go.mod go.sum ./
+RUN go mod download
+ADD . .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o cmd/tender/bin/main ./cmd/tender/
 
-FROM openjdk:8-jre-slim
-
-EXPOSE 8080
-
-RUN mkdir /app
-
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
-
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
-
+FROM alpine:latest
+WORKDIR /tender
+RUN mkdir /tender/logs
+COPY --from=build /build/cmd/tender/bin/main .
+COPY --from=build /build/migrations /tender/migrations
+CMD ["/tender/main"]
