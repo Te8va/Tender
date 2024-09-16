@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/pkg/logger"
+	"github.com/Te8va/Tender/pkg/logger"
 )
 
 type informativeResponseWriter struct {

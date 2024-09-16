@@ -10,5 +10,5 @@ type Config struct {
 	PostgresPort     int    `env:"POSTGRES_PORT"         envDefault:"5432"`
 	MigrationsPath   string `env:"MIGRATIONS_PATH"       envDefault:"migrations"`
 	LogFilePath      string `env:"LOG_FILE_PATH"         envDefault:"logfile.log"`
-	PostgresConn     string `env:"POSTGRES_CONN"         envDefault:"postgres://tender:tender@tender:5432/tender"`
+	PostgresConn     string `env:"POSTGRES_CONN"         envDefault:"postgres://tender:tender@postgres:5432/tender"`
 }

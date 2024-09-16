@@ -11,16 +11,14 @@ import (
 	"syscall"
 	"time"
 
-	_ "git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/cmd/tender/docs"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/config"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/handler"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/middleware"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/repository"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/service"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/pkg/logger"
+	"github.com/Te8va/Tender/internal/tender/config"
+	"github.com/Te8va/Tender/internal/tender/handler"
+	"github.com/Te8va/Tender/internal/tender/middleware"
+	"github.com/Te8va/Tender/internal/tender/repository"
+	"github.com/Te8va/Tender/internal/tender/service"
+	"github.com/Te8va/Tender/pkg/logger"
 	"github.com/caarlos0/env/v6"
 	"github.com/golang-migrate/migrate/v4"
-	httpSwagger "github.com/swaggo/http-swagger"
 	"go.uber.org/zap"
 )
 
@@ -74,7 +72,6 @@ func main() {
 	mux.Handle("GET /api/tenders/{tenderId}/status", middleware.Log(http.HandlerFunc(tenderHandler.GetTenderStatusHandler)))
 	mux.Handle("PUT /api/tenders/{tenderId}/status", middleware.Log(http.HandlerFunc(tenderHandler.UpdateTenderStatusHandler)))
 	mux.Handle("PUT /api/tenders/{tenderId}/rollback/{version}", middleware.Log(http.HandlerFunc(tenderHandler.RollbackTenderHandler)))
-	mux.Handle("/swagger/*", httpSwagger.WrapHandler)
 
 	server := &http.Server{
 		Addr:     fmt.Sprintf("%s:%d", cfg.ServiceHost, cfg.ServicePort),

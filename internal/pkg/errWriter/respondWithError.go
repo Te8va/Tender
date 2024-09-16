@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/domain"
+	"github.com/Te8va/Tender/internal/tender/domain"
 )
 
 func RespondWithError(w http.ResponseWriter, statusCode int, errMessage string) {

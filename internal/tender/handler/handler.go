@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	errwriter "git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/pkg/errWriter"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/domain"
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/pkg/logger"
+	errwriter "github.com/Te8va/Tender/internal/pkg/errWriter"
+	"github.com/Te8va/Tender/internal/tender/domain"
+	"github.com/Te8va/Tender/pkg/logger"
 )
 
 type PingHandler struct {
@@ -118,7 +118,6 @@ func (h *TenderHandler) GetUserTendersHandler(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-
 	tenders, err := h.srv.GetUserTenders(r.Context(), limit, offset, username)
 	if err != nil {
 		var statusCode int
@@ -152,7 +151,6 @@ func (h *TenderHandler) GetUserTendersHandler(w http.ResponseWriter, r *http.Req
 		errwriter.RespondWithError(w, http.StatusInternalServerError, "Failed to encode response")
 	}
 }
-
 
 func (h *TenderHandler) CreateTenderHandler(w http.ResponseWriter, r *http.Request) {
 	var req domain.CreateTenderRequest

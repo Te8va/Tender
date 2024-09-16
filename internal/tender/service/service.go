@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/domain"
+	"github.com/Te8va/Tender/internal/tender/domain"
 )
 
 type pingProvider struct {

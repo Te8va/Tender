@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"git.codenrock.com/cnrprod1725727333-user-88349/zadanie-6105/internal/tender/domain"
+	"github.com/Te8va/Tender/internal/tender/domain"
 	"github.com/jackc/pgx"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/lib/pq"

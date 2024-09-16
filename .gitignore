@@ -30,6 +30,7 @@ HELP.md
 .vscode/
 
 sql/
+vendor/
 docker-compose.yml
 tender-db/
 .env
